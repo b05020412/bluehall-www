@@ -3,22 +3,31 @@ provider "aws" {
 }
 
 data "terraform_remote_state" "core" {
-  backend = "atlas"
+  backend = "remote"
   config {
-    name = "vdsec/bluehall-core-dev"
+    hostname     = "${var.tfe_hostname}"
+    organization = "${var.organization}"
+    token        = "${var.token}"
+
+    workspaces {
+      name = "${var.workspace}"
+    }
   }
 }
 
-resource "aws_instance" "bastion" {
-  ami                         = "${lookup(var.bastion_ami, var.region)}"
-  instance_type               = "${var.bastion_instance_type}"
-  key_name                    = "${var.key_name}"
-  monitoring                  = true
-  vpc_security_group_ids      = ["sg-0e4af5dec5a1bc2c0"]
-  subnet_id                   = "subnet-0f54a4cf7538d2029"
-  associate_public_ip_address = true
+module "ec2-instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "1.21.0"
 
+  ami                         = "${lookup(var.www_ami, var.region)}"
+  instance_type               = "${var.www_instance_type}"
+  name                        = "devops"
+  key_name                    = "${var.key_name}"
+  vpc_security_group_ids      = ["${data.terraform_remote_state.core.default_security_group_id}"]
+  subnet_id                   = "${data.terraform_remote_state.core.public_subnet_ids[0]}"
+  associate_public_ip_address = true
   tags {
-    Name = "${var.environment}-bastion"
+    Owner = "heewon1.kim"
+    TTL = "${timestamp()}"
   }
 }

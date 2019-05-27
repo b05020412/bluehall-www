@@ -3,13 +3,8 @@ variable "region" {
   description = "The name of region"
 }
 
-variable "prefix" {
-  default = "paraconsistent.com"
-  description = "The name of our org, i.e. example.com."
-}
-
 variable "key_name" {
-  default = "www-dev"
+  default = "devops"
   description = "ssh pem key pair"
 }
 
@@ -18,7 +13,7 @@ variable "environment" {
   description = "The name of the environment"
 }
 
-variable "bastion_ami" {
+variable "www_ami" {
   default = {
     "us-east-1" = "ami-f652979b"
     "us-west-1" = "ami-7c4b331c"
@@ -28,7 +23,7 @@ variable "bastion_ami" {
   description = "The AMIs to use for web and app instances."
 }
 
-variable "bastion_instance_type" {
+variable "www_instance_type" {
   default     = "t2.micro"
   description = "The instance type to launch "
 }
