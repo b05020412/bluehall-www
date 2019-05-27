@@ -27,3 +27,13 @@ variable "www_instance_type" {
   default     = "t2.micro"
   description = "The instance type to launch "
 }
+
+variabe "token" {
+  default = ""
+  description = "token for accessing other workspaces"
+}
+
+variable "workspace-core" {
+  default = ""
+  description = "workspace where core state info is resided in"
+}
