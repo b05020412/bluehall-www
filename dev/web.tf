@@ -4,12 +4,12 @@ provider "aws" {
 
 data "terraform_remote_state" "core" {
   backend = "remote"
-  config {
+  config = {
     hostname     = "${var.tfe_hostname}"
     organization = "${var.organization}"
     token        = "${var.token}"
 
-    workspaces {
+    workspaces = {
       name = "${var.workspace-core}"
     }
   }
