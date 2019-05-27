@@ -26,7 +26,7 @@ module "ec2-instance" {
   vpc_security_group_ids      = ["${data.terraform_remote_state.core.default_security_group_id}"]
   subnet_id                   = "${data.terraform_remote_state.core.public_subnet_ids[0]}"
   associate_public_ip_address = true
-  tags {
+  tags = {
     Owner = "heewon1.kim"
     TTL = "${timestamp()}"
   }
