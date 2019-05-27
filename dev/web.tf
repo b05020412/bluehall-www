@@ -10,7 +10,7 @@ data "terraform_remote_state" "core" {
     token        = "${var.token}"
 
     workspaces {
-      name = "${var.workspace}"
+      name = "${var.workspace-core}"
     }
   }
 }
