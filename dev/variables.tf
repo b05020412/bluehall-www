@@ -37,3 +37,13 @@ variable "workspace-core" {
   default = ""
   description = "workspace where core state info is resided in"
 }
+
+variable "organization" {
+  default = "vdsec"
+  description = "organization name"
+}
+
+variable "tfe_hostname" {
+  default = "app.terraform.io"
+  description = "TFE hostname"
+}
