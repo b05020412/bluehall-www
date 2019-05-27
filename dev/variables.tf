@@ -28,7 +28,7 @@ variable "www_instance_type" {
   description = "The instance type to launch "
 }
 
-variabe "token" {
+variable "token" {
   default = ""
   description = "token for accessing other workspaces"
 }
