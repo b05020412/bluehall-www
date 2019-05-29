@@ -3,6 +3,11 @@ variable "region" {
   description = "The name of region"
 }
 
+variable "name" {
+  default = "devops"
+  description = "name of instance"
+}
+
 variable "key_name" {
   default = "devops"
   description = "ssh pem key pair"
@@ -23,7 +28,12 @@ variable "www_ami" {
   description = "The AMIs to use for web and app instances."
 }
 
-variable "www_instance_type" {
+variable "instance_count" {
+  default = 1
+  description = "number of instances"
+}
+
+variable "instance_type" {
   default     = "t2.micro"
   description = "The instance type to launch "
 }
@@ -41,6 +51,11 @@ variable "workspace-core" {
 variable "organization" {
   default = "vdsec"
   description = "organization name"
+}
+
+variable "owner" {
+  default = ""
+  description = "owner name"
 }
 
 variable "tfe_hostname" {
