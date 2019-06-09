@@ -3,9 +3,7 @@ provider "aws" {
 }
 
 data "aws_vpc" "dev" {
-  tags {
-    Name = "dev"
-  }
+  id = "vpc-0224580e6e66e24d1"
 }
 
 data "aws_security_group" "default" {
