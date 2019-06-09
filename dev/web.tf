@@ -3,10 +3,15 @@ provider "aws" {
 }
 
 data "aws_vpc" "dev" {
-  id = "vpc-0224580e6e66e24d1"
+  id = "${var.vpc_id}"
 }
 
 data "aws_security_groups" "dev" {
+  filter {
+    name   = "group-name"
+    values = ["default"]
+  }
+
   filter {
     name   = "vpc-id"
     values = ["${data.aws_vpc.dev.id}"]
