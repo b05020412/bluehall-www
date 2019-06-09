@@ -55,7 +55,7 @@ output "vpc-id" {
 }
 
 output "sg-1" {
-  value = "${data.aws_security_group.dev.*.id}"
+  value = ["${data.aws_security_group.dev.*.id}"]
 }
 
 output "subnet_cidr_blocks" {
