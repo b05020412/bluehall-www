@@ -6,8 +6,16 @@ data "aws_vpc" "dev" {
   id = "vpc-0224580e6e66e24d1"
 }
 
-data "aws_security_group" "default" {
-  vpc_id = "${data.aws_vpc.dev.id}"
+data "aws_security_groups" "dev" {
+  filter {
+    name   = "vpc-id"
+    values = ["${data.aws_vpc.dev.id}"]
+  }
+}
+
+data "aws_security_group" "dev" {
+  count = "${length(data.aws_security_groups.dev.ids)}"
+  id    = "${data.aws_security_groups.dev.ids[count.index]}"
 }
 
 output "vpc-id" {
@@ -15,5 +23,5 @@ output "vpc-id" {
 }
 
 output "sg-1" {
-  value = "${data.aws_security_group.default.id}"
+  value = "${data.aws_security_group.dev.*.id}"
 }
