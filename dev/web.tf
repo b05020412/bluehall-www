@@ -41,8 +41,8 @@ module "ec2-instance" {
   instance_type               = "${var.instance_type}"
   ami                         = "${lookup(var.www_ami, var.region)}"
   key_name                    = "${var.key_name}"
-  vpc_security_group_ids      = ["sg-03a3e200d8fe4ead7"]
-  subnet_id                   = "${data.aws_subnet.dev[0].id}"
+  vpc_security_group_ids      = ["${data.aws_security_group.dev.*.id}"]
+  subnet_id                   = "subnet-046567495ba5ad92b"
   associate_public_ip_address = true
   tags = {
     Owner = "${var.owner}"
