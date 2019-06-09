@@ -8,6 +8,11 @@ variable "name" {
   description = "name of instance"
 }
 
+variable "vpc_id" {
+  default = "vpc-0224580e6e66e24d1"
+  description = "VPC id"
+}
+
 variable "key_name" {
   default = "devops"
   description = "ssh pem key pair"
