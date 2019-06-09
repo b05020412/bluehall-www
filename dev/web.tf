@@ -9,9 +9,13 @@ data "aws_vpc" "dev" {
 }
 
 data "aws_security_group" "default" {
-  vpc_id = "${data.aws_vpc.id}"
+  vpc_id = "${data.aws_vpc.dev.id}"
 }
 
 output "vpc-id" {
-  value = "${data.aws_vpc.id}"
+  value = "${data.aws_vpc.dev.id}"
+}
+
+output "sg-1" {
+  value = "${data.aws_security_group.default.id}"
 }
