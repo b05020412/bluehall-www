@@ -33,7 +33,8 @@ module "ec2-instance" {
   key_name                    = "${var.key_name}"
   #vpc_security_group_ids      = ["${data.aws_security_group.dev.*.id}"]
   vpc_security_group_ids      = ["sg-09b80f6e"]
-  subnet_id                   = "${data.aws_subnet_ids.dev.ids[1]}"
+  #subnet_id                   = "${data.aws_subnet_ids.dev.ids[1]}"
+  subnet_id                   = "subnet-5b75f93f"
   associate_public_ip_address = true
   tags = {
     Owner = "${var.owner}"
