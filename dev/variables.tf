@@ -1,5 +1,5 @@
 variable "region" {
-  default = "us-east-1"
+  default = "cn-north-1"
   description = "The name of region"
 }
 
@@ -9,7 +9,7 @@ variable "name" {
 }
 
 variable "vpc_id" {
-  default = "vpc-0224580e6e66e24d1"
+  default = "vpc-0d521069"
   description = "VPC id"
 }
 
@@ -25,7 +25,7 @@ variable "environment" {
 
 variable "www_ami" {
   default = {
-    "us-east-1" = "ami-f652979b"
+    "cn-north-1" = "ami-08b835182371dee58"
     "us-west-1" = "ami-7c4b331c"
     "eu-west-1" = "ami-0ae77879"
   }
@@ -54,7 +54,7 @@ variable "workspace-core" {
 }
 
 variable "organization" {
-  default = "vdsec"
+  default = "vdsrcn"
   description = "organization name"
 }
 
