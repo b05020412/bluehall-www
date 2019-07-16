@@ -37,7 +37,7 @@ module "ec2-instance" {
   subnet_id                   = "subnet-5b75f93f"
   associate_public_ip_address = true
   tags = {
- #   Owner = "${var.owner}"
+    Owner = "${var.owner}"
     TTL = "${timestamp()}"
   }
 }
